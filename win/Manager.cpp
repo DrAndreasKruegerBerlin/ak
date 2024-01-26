@@ -10,7 +10,6 @@ namespace win
 	HINSTANCE        Manager::hInst_{ nullptr };
 	Manager::MapType Manager::map_{};
 	ATOM             Manager::atomRegister_{ 0 };
-	std::wstring     Manager::nameWindowClass_{};
 
 	Manager::Manager(HINSTANCE hInst)
 	{
@@ -26,13 +25,13 @@ namespace win
 	Manager::~Manager()
 	{
 		/*
-		* Destroy not directly by erasing a map element, instaed call the API
+		* Do not destroy directly by erasing a map element! Instaed call the API
 		* DestroyWindow that will erase the corresponding map element with the attached
-		* application by sending the message WM_NCDESTROY.
+		* application indirectly by sending the message WM_NCDESTROY.
 		*/
 		while (! map_.empty())
 		{
-			BOOL ret = ::DestroyWindow(map_.begin()->first);
+			const BOOL ret = ::DestroyWindow(map_.begin()->first);
 		}
 		unregisterWindowClass();
 		hInst_ = nullptr;
@@ -42,7 +41,7 @@ namespace win
 	{
 		const HWND hWnd = ::CreateWindowExW(
 			0,
-			nameWindowClass_.c_str(),
+			LPCWSTR(atomRegister_),
 			spApp->getName().c_str(),
 			WS_OVERLAPPEDWINDOW|WS_VISIBLE,
 			20, 20, 800, 600,
@@ -57,16 +56,16 @@ namespace win
 
 	void Manager::registerWindowClass()
 	{
-		nameWindowClass_ = L"AK_BASIC_WINDOW_CLASS_V1.0";
+		LPCWSTR nameWindowClass = L"AK_BASIC_WINDOW_CLASS_V1.0";
 		WNDCLASSEXW wc =
 		{
-			.cbSize = sizeof(wc),
-			.style = CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS,
-			.lpfnWndProc = &Manager::handleMessage,
-			.hInstance = hInst_,
-			.hCursor = ::LoadCursor(NULL, IDC_ARROW),
+			.cbSize        = sizeof(wc),
+			.style         = CS_HREDRAW | CS_VREDRAW | CS_DBLCLKS,
+			.lpfnWndProc   = &Manager::handleMessage,
+			.hInstance     = hInst_,
+			.hCursor       = ::LoadCursor(NULL, IDC_ARROW),
 			.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1),
-			.lpszClassName = nameWindowClass_.c_str(),
+			.lpszClassName = nameWindowClass,
 		};
 		atomRegister_ = ::RegisterClassExW(&wc);
 		if (0 == atomRegister_)
@@ -79,7 +78,7 @@ namespace win
 	{
 		if (0 != atomRegister_)
 		{
-			const BOOL ret = ::UnregisterClassW(nameWindowClass_.c_str(), hInst_);
+			const BOOL ret = ::UnregisterClassW(LPCWSTR(atomRegister_), hInst_);
 			if (ret)
 			{
 				atomRegister_ = 0;
@@ -120,7 +119,7 @@ namespace win
 		{
 			destroyWindow(ev);
 		}
-		if (!res)
+		if (! res)
 		{
 			return ::DefWindowProc(ev.hWnd_, ev.msg_, ev.wParam_, ev.lParam_);
 		}
@@ -135,7 +134,7 @@ namespace win
 			throw std::runtime_error("bad create struct");
 		}
 		AppBasePtrType* ppsApp = reinterpret_cast<AppBasePtrType*>(pCs->lpCreateParams);
-		if (!map_.insert({ ev.hWnd_, *ppsApp }).second)
+		if (! map_.insert({ ev.hWnd_, *ppsApp }).second)
 		{
 			throw std::runtime_error("bad insert");
 		}
@@ -168,9 +167,9 @@ namespace win
 	int Manager::run()
 	{
 		deb::Debug() << "loop started";
-		BOOL ret{ TRUE };
-		MSG msg;
-		while (TRUE == ret)
+		BOOL ret{};
+		MSG msg{};
+		do
 		{
 			ret = GetMessage(&msg, nullptr, 0, 0);
 			switch (ret)
@@ -184,7 +183,8 @@ namespace win
 			default: // yes, there is the possibility to get -1!
 				throw std::runtime_error("bad GetMessage");
 			}
-		}
+		} 
+		while (TRUE == ret);
 		deb::Debug() << "loop ended";
 		return int(msg.wParam);
 	}

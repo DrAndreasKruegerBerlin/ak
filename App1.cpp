@@ -59,7 +59,7 @@ std::optional<LRESULT> App1::doCreate(const win::Event& ev)
 	device_.setRenderStateCullMode(d3d::Device::CullMode::CW);    // 
 	device_.setRenderStateZEnable(true);    // turn on the z-buffer
 	last_ = start_ = Clock::now();
-	timer_.set(ev.hWnd_, 50);
+	timer_.set(ev.hWnd_, std::chrono::milliseconds(50));
 	return { 0 };
 }
 

@@ -5,8 +5,8 @@
 #include "d3d/Device.h"
 #include "d3d/VertexBuffer.h"
 #include "win/Timer.h"
+#include "com/Chrono.h"
 #include <string>
-#include <chrono>
 
 // forward references
 namespace d3d { class Context; }
@@ -16,8 +16,8 @@ namespace win { class Painter;  }
 class App1 : public win::AppBase
 {
 public:
-	using Clock = std::chrono::steady_clock;
-	using TimePoint = std::chrono::time_point<Clock>;
+	using Clock     = com::Clock;
+	using TimePoint = com::TimePoint;
 
 public: 
 	App1(const std::wstring& name, d3d::Context& context);

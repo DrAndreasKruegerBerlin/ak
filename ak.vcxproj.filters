@@ -14,6 +14,9 @@
     <Filter Include="win">
       <UniqueIdentifier>{0385646d-b467-46ae-8667-517273e3a17f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="com">
+      <UniqueIdentifier>{82b9f15e-486e-4f18-b288-bf90cd4d1fcd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -82,6 +85,12 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="win\Painter.h">
       <Filter>win</Filter>
+    </ClInclude>
+    <ClInclude Include="com\Chrono.h">
+      <Filter>com</Filter>
+    </ClInclude>
+    <ClInclude Include="com\Cast.h">
+      <Filter>com</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

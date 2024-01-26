@@ -34,9 +34,8 @@ namespace win
 
 	private:
 		static HINSTANCE hInst_;
-		static MapType map_;
-		static ATOM atomRegister_;
-		static std::wstring nameWindowClass_;
+		static ATOM      atomRegister_;
+		static MapType   map_;
 	};
 
 }

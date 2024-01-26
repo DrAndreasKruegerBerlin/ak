@@ -1,30 +1,17 @@
 #pragma once
 
 #include <Windows.h>
+#include "../com/Chrono.h"
 
 namespace win
 {
-	/*
-	class Timer
-	{
-	public:
-		Timer() = default;
-		~Timer();
-		void set(HWND hWnd, const UINT ms);
-		void kill();
-		HWND getHWnd() const;
-
-	private:
-		HWND hWnd_{nullptr};
-	};
-	*/
 
 	class Timer
 	{
 	public:
 		Timer() = default;
 		~Timer();
-		void set(HWND hWnd, const UINT ms);
+		void set(HWND hWnd, const std::chrono::milliseconds period);
 		void kill();
 		HWND getHWnd() const;
 
