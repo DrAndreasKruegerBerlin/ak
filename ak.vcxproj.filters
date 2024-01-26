@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Ressourcendateien">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="d3d">
+      <UniqueIdentifier>{c5100828-780d-4ca1-966c-5bd320384f3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="deb">
+      <UniqueIdentifier>{255a321b-c6f6-42cd-9849-064b40aa8d7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="win">
+      <UniqueIdentifier>{0385646d-b467-46ae-8667-517273e3a17f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="com">
+      <UniqueIdentifier>{82b9f15e-486e-4f18-b288-bf90cd4d1fcd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="d3d\Context.cpp">
+      <Filter>d3d</Filter>
+    </ClCompile>
+    <ClCompile Include="d3d\Device.cpp">
+      <Filter>d3d</Filter>
+    </ClCompile>
+    <ClCompile Include="d3d\RuntimeError.cpp">
+      <Filter>d3d</Filter>
+    </ClCompile>
+    <ClCompile Include="d3d\VertexBuffer.cpp">
+      <Filter>d3d</Filter>
+    </ClCompile>
+    <ClCompile Include="win\Manager.cpp">
+      <Filter>win</Filter>
+    </ClCompile>
+    <ClCompile Include="App1.cpp" />
+    <ClCompile Include="deb\WinMsgText.cpp">
+      <Filter>deb</Filter>
+    </ClCompile>
+    <ClCompile Include="win\Timer.cpp">
+      <Filter>win</Filter>
+    </ClCompile>
+    <ClCompile Include="win\AppBase.cpp">
+      <Filter>win</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="win\Painter.cpp">
+      <Filter>win</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="d3d\Context.h">
+      <Filter>d3d</Filter>
+    </ClInclude>
+    <ClInclude Include="d3d\Device.h">
+      <Filter>d3d</Filter>
+    </ClInclude>
+    <ClInclude Include="d3d\RuntimeError.h">
+      <Filter>d3d</Filter>
+    </ClInclude>
+    <ClInclude Include="d3d\VertexBuffer.h">
+      <Filter>d3d</Filter>
+    </ClInclude>
+    <ClInclude Include="deb\Debug.h">
+      <Filter>deb</Filter>
+    </ClInclude>
+    <ClInclude Include="win\Manager.h">
+      <Filter>win</Filter>
+    </ClInclude>
+    <ClInclude Include="win\AppBase.h">
+      <Filter>win</Filter>
+    </ClInclude>
+    <ClInclude Include="win\Event.h">
+      <Filter>win</Filter>
+    </ClInclude>
+    <ClInclude Include="App1.h" />
+    <ClInclude Include="deb\WinMsgText.h">
+      <Filter>deb</Filter>
+    </ClInclude>
+    <ClInclude Include="win\Timer.h">
+      <Filter>win</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="win\Painter.h">
+      <Filter>win</Filter>
+    </ClInclude>
+    <ClInclude Include="com\Chrono.h">
+      <Filter>com</Filter>
+    </ClInclude>
+    <ClInclude Include="com\Cast.h">
+      <Filter>com</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="x.map" />
+    <None Include="README.md" />
+  </ItemGroup>
+</Project>
