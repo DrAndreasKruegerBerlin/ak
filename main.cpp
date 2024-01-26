@@ -15,6 +15,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		manager.passApp(std::make_shared<App1>(L"APP1", context));
 		manager.passApp(std::make_shared<App1>(L"APP2", context));
 		manager.passApp(std::make_shared<App1>(L"APP3", context));
+		manager.passApp(std::make_shared<App1>(L"APP4", context));
+		manager.passApp(std::make_shared<App1>(L"APP5", context));
+		manager.passApp(std::make_shared<App1>(L"APP6", context));
 		ret = manager.run();
 	}
 	catch (const std::exception& exc)

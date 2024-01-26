@@ -4,7 +4,7 @@
 
 namespace win
 {
-
+	/*
 	class Timer
 	{
 	public:
@@ -17,5 +17,20 @@ namespace win
 	private:
 		HWND hWnd_{nullptr};
 	};
+	*/
 
+	class Timer
+	{
+	public:
+		Timer() = default;
+		~Timer();
+		void set(HWND hWnd, const UINT ms);
+		void kill();
+		HWND getHWnd() const;
+
+	private:
+		HANDLE hTimerQueue_{ nullptr };
+		HANDLE hTimer_{ nullptr };
+		HWND   hWnd_{ nullptr };
+	};
 }

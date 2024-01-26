@@ -1,12 +1,11 @@
 #pragma once
 
 
+#include <Windows.h>
 #include <stdexcept>
 #include <sstream>
 #include <string>
-#include <vector>
 #include <optional>
-#include <Windows.h>
 
 
 namespace d3d {
