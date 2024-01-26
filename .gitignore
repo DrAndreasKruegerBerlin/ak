@@ -1,0 +1,6 @@
+*.map
+*.aps
+*.suo
+.vs
+Debug
+Release
