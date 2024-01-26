@@ -8,6 +8,7 @@ struct IDirect3DVertexBuffer9;
 namespace d3d
 {
 	class Device;
+
 	class VertexBuffer
 	{
 	public:
@@ -40,6 +41,10 @@ namespace d3d
 			LockGuard guard(pBuffer_);
 			std::copy(begin, end, guard.getMem());
 		};
+		operator bool() const
+		{
+			return nullptr != pBuffer_;
+		}
 
 	private:
 		VertexBuffer(IDirect3DVertexBuffer9* pBuffer);

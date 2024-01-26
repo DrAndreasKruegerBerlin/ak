@@ -19,21 +19,24 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="App1.cpp" />
+    <ClCompile Include="ak\App.cpp" />
+    <ClCompile Include="ak\Scene.cpp" />
+    <ClCompile Include="ak\View.cpp" />
     <ClCompile Include="d3d\Context.cpp" />
     <ClCompile Include="d3d\Device.cpp" />
     <ClCompile Include="d3d\RuntimeError.cpp" />
     <ClCompile Include="d3d\VertexBuffer.cpp" />
     <ClCompile Include="deb\WinMsgText.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="win\AppBase.cpp" />
     <ClCompile Include="win\Manager.cpp" />
     <ClCompile Include="win\Painter.cpp" />
     <ClCompile Include="win\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="App1.h" />
+    <ClInclude Include="ak\App.h" />
+    <ClInclude Include="ak\Scene.h" />
+    <ClInclude Include="ak\View.h" />
     <ClInclude Include="com\Cast.h" />
     <ClInclude Include="com\Chrono.h" />
     <ClInclude Include="d3d\Context.h" />
@@ -42,7 +45,6 @@
     <ClInclude Include="d3d\VertexBuffer.h" />
     <ClInclude Include="deb\Debug.h" />
     <ClInclude Include="deb\WinMsgText.h" />
-    <ClInclude Include="Scene.h" />
     <ClInclude Include="win\AppBase.h" />
     <ClInclude Include="win\Event.h" />
     <ClInclude Include="win\Manager.h" />
