@@ -1,19 +1,18 @@
 #pragma once
 
+#include "../ak/IScene.h"
 #include "../d3d/VertexBuffer.h"
-#include "../com/Chrono.h"
 
 
-namespace d3d { class Device; }
 
 namespace ak 
 {
 
-	class Scene
+	class ScenePyramid final : public IScene
 	{
 	public:
-		Scene() = default;
-		~Scene();
+		ScenePyramid() = default;
+		virtual ~ScenePyramid() = default;
 		void init(d3d::Device& dev);
 		void render(d3d::Device& dev, com::TimePoint tpNow, com::TimePoint tpStart);
 

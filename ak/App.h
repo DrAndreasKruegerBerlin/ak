@@ -1,8 +1,8 @@
 #pragma once
 
 
-#include "../ak/Scene.h"
-#include "../ak/View.h"
+#include "../ak/IScene.h"
+#include "../ak/IView.h"
 #include "../win/AppBase.h"
 #include "../d3d/Device.h"
 #include "../win/Timer.h"
@@ -21,8 +21,8 @@ namespace ak
 	public:
 		using Clock = com::Clock;
 		using TimePoint = com::TimePoint;
-		using ScenePtrType = std::unique_ptr<ak::Scene>;
-		using ViewPtrType = std::unique_ptr<ak::View>;
+		using ScenePtrType = std::unique_ptr<ak::IScene>;
+		using ViewPtrType = std::unique_ptr<ak::IView>;
 
 	public:
 		App(const std::wstring& name, d3d::Context& context, ScenePtrType&& pScene, ViewPtrType&& pView);

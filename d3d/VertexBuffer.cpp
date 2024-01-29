@@ -60,6 +60,12 @@ namespace d3d
 		}
 	}
 
+	size_t VertexBuffer::getNoOfVertices() const
+	{
+		const size_t no{ getSize() / 3U }; // three entries per vertex
+		return no;
+	}
+
 	size_t VertexBuffer::getSize() const
 	{
 		D3DVERTEXBUFFER_DESC desc;

@@ -20,7 +20,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ak\App.cpp" />
-    <ClCompile Include="ak\Scene.cpp" />
+    <ClCompile Include="ak\SceneCube.cpp" />
+    <ClCompile Include="ak\ScenePyramid.cpp" />
     <ClCompile Include="ak\View.cpp" />
     <ClCompile Include="d3d\Context.cpp" />
     <ClCompile Include="d3d\Device.cpp" />
@@ -35,7 +36,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ak\App.h" />
-    <ClInclude Include="ak\Scene.h" />
+    <ClInclude Include="ak\IScene.h" />
+    <ClInclude Include="ak\IView.h" />
+    <ClInclude Include="ak\SceneCube.h" />
+    <ClInclude Include="ak\ScenePyramid.h" />
     <ClInclude Include="ak\View.h" />
     <ClInclude Include="com\Cast.h" />
     <ClInclude Include="com\Chrono.h" />

@@ -45,6 +45,7 @@ namespace d3d
 		{
 			return nullptr != pBuffer_;
 		}
+		size_t getNoOfVertices() const;
 
 	private:
 		VertexBuffer(IDirect3DVertexBuffer9* pBuffer);

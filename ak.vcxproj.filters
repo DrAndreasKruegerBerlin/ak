@@ -53,10 +53,13 @@
     <ClCompile Include="ak\App.cpp">
       <Filter>ak</Filter>
     </ClCompile>
-    <ClCompile Include="ak\Scene.cpp">
+    <ClCompile Include="ak\ScenePyramid.cpp">
       <Filter>ak</Filter>
     </ClCompile>
     <ClCompile Include="ak\View.cpp">
+      <Filter>ak</Filter>
+    </ClCompile>
+    <ClCompile Include="ak\SceneCube.cpp">
       <Filter>ak</Filter>
     </ClCompile>
   </ItemGroup>
@@ -103,10 +106,19 @@
     <ClInclude Include="ak\App.h">
       <Filter>ak</Filter>
     </ClInclude>
-    <ClInclude Include="ak\Scene.h">
+    <ClInclude Include="ak\ScenePyramid.h">
       <Filter>ak</Filter>
     </ClInclude>
     <ClInclude Include="ak\View.h">
+      <Filter>ak</Filter>
+    </ClInclude>
+    <ClInclude Include="ak\IView.h">
+      <Filter>ak</Filter>
+    </ClInclude>
+    <ClInclude Include="ak\IScene.h">
+      <Filter>ak</Filter>
+    </ClInclude>
+    <ClInclude Include="ak\SceneCube.h">
       <Filter>ak</Filter>
     </ClInclude>
   </ItemGroup>

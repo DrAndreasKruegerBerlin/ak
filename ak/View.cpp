@@ -8,10 +8,7 @@ namespace ak
 	{
 	public:
 		ViewImpl() = default;
-		~ViewImpl()
-		{
-			// do nothing
-		}
+		~ViewImpl() = default;
 		void init(int width, int height)
 		{ 
 			// set the view transform to matView
@@ -47,14 +44,18 @@ namespace ak
 		int height_{}, width_{};
 	};
 
+	View::View()
+	{
+		// must exist, because of pImpl idiom
+	}
+
 	View::~View()
 	{
-		delete pImpl_;
+		// must exist, because of pImpl idiom
 	}
 
 	void View::init(int width, int height)
 	{
-		pImpl_ = new ViewImpl ();
 		pImpl_->init(width, height);
 	}
 
