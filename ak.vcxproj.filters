@@ -17,6 +17,9 @@
     <Filter Include="com">
       <UniqueIdentifier>{82b9f15e-486e-4f18-b288-bf90cd4d1fcd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ak">
+      <UniqueIdentifier>{ebb2644b-9f50-427b-95bf-e5a2a3df7b2a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -35,7 +38,6 @@
     <ClCompile Include="win\Manager.cpp">
       <Filter>win</Filter>
     </ClCompile>
-    <ClCompile Include="App1.cpp" />
     <ClCompile Include="deb\WinMsgText.cpp">
       <Filter>deb</Filter>
     </ClCompile>
@@ -45,9 +47,20 @@
     <ClCompile Include="win\AppBase.cpp">
       <Filter>win</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="win\Painter.cpp">
       <Filter>win</Filter>
+    </ClCompile>
+    <ClCompile Include="ak\App.cpp">
+      <Filter>ak</Filter>
+    </ClCompile>
+    <ClCompile Include="ak\ScenePyramid.cpp">
+      <Filter>ak</Filter>
+    </ClCompile>
+    <ClCompile Include="ak\View.cpp">
+      <Filter>ak</Filter>
+    </ClCompile>
+    <ClCompile Include="ak\SceneCube.cpp">
+      <Filter>ak</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -75,14 +88,12 @@
     <ClInclude Include="win\Event.h">
       <Filter>win</Filter>
     </ClInclude>
-    <ClInclude Include="App1.h" />
     <ClInclude Include="deb\WinMsgText.h">
       <Filter>deb</Filter>
     </ClInclude>
     <ClInclude Include="win\Timer.h">
       <Filter>win</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h" />
     <ClInclude Include="win\Painter.h">
       <Filter>win</Filter>
     </ClInclude>
@@ -91,6 +102,24 @@
     </ClInclude>
     <ClInclude Include="com\Cast.h">
       <Filter>com</Filter>
+    </ClInclude>
+    <ClInclude Include="ak\App.h">
+      <Filter>ak</Filter>
+    </ClInclude>
+    <ClInclude Include="ak\ScenePyramid.h">
+      <Filter>ak</Filter>
+    </ClInclude>
+    <ClInclude Include="ak\View.h">
+      <Filter>ak</Filter>
+    </ClInclude>
+    <ClInclude Include="ak\IView.h">
+      <Filter>ak</Filter>
+    </ClInclude>
+    <ClInclude Include="ak\IScene.h">
+      <Filter>ak</Filter>
+    </ClInclude>
+    <ClInclude Include="ak\SceneCube.h">
+      <Filter>ak</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

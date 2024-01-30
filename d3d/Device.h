@@ -41,6 +41,11 @@ namespace d3d
 		VertexBuffer createVertexBuffer(const size_t size);
 		void setStreamSource(const VertexBuffer& buffer);
 
+		operator bool() const
+		{
+			return nullptr != pDev_;
+		}
+
 	private:
 		Device(IDirect3DDevice9*);
 

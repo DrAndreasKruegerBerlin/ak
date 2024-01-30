@@ -2,7 +2,10 @@
 #include "win/Manager.h"
 #include "d3d/Context.h"
 #include "deb/Debug.h"
-#include "App1.h"
+#include "ak/App.h"
+#include "ak/ScenePyramid.h"
+#include "ak/SceneCube.h"
+#include "ak/View.h"
 #include <stdexcept>
 
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
@@ -12,12 +15,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	{
 		::d3d::Context context{};
 		::win::Manager manager{hInstance};
-		manager.passApp(std::make_shared<App1>(L"APP1", context));
-		manager.passApp(std::make_shared<App1>(L"APP2", context));
-		manager.passApp(std::make_shared<App1>(L"APP3", context));
-		manager.passApp(std::make_shared<App1>(L"APP4", context));
-		manager.passApp(std::make_shared<App1>(L"APP5", context));
-		manager.passApp(std::make_shared<App1>(L"APP6", context));
+		manager.passApp(std::make_shared<ak::App>(L"APP1", context, std::make_unique<ak::View>(), std::make_unique<ak::ScenePyramid>()));
+		manager.passApp(std::make_shared<ak::App>(L"APP2", context, std::make_unique<ak::View>(), std::make_unique<ak::SceneCube>()));
+		manager.passApp(std::make_shared<ak::App>(L"APP3", context, std::make_unique<ak::View>(), std::make_unique<ak::ScenePyramid>(), std::make_unique<ak::SceneCube>()));
 		ret = manager.run();
 	}
 	catch (const std::exception& exc)
