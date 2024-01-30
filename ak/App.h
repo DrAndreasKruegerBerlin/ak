@@ -9,6 +9,7 @@
 #include "../com/Chrono.h"
 #include <string>
 #include <memory>
+#include <vector>
 
 // forward references
 namespace d3d { class Context; }
@@ -23,10 +24,19 @@ namespace ak
 		using TimePoint = com::TimePoint;
 		using ScenePtrType = std::unique_ptr<ak::IScene>;
 		using ViewPtrType = std::unique_ptr<ak::IView>;
+		using SceneArrType = std::vector<std::shared_ptr<ak::IScene> >;
 
 	public:
-		App(const std::wstring& name, d3d::Context& context, ScenePtrType&& pScene, ViewPtrType&& pView);
-		virtual ~App();
+		App() = default;
+		virtual ~App() = default;
+		template<typename ... Scene>
+		App(const std::wstring& name, d3d::Context& context, ViewPtrType&& pView, Scene&& ... scene)
+			: AppBase(name, context)
+			, pView_{ std::move(pView) }
+			, arrScene_{ {std::move(scene)...} }
+		{
+			// do nothing
+		}
 		virtual std::optional<LRESULT> passEvent(const win::Event& ev);
 
 	private:
@@ -35,12 +45,12 @@ namespace ak
 		std::optional<LRESULT> doPaint(const win::Event& ev);
 
 	private:
-		d3d::Device       device_;
-		win::Timer        timer_;
-		ScenePtrType      pScene_;
-		ViewPtrType       pView_;
-		TimePoint         last_;
-		TimePoint         start_;
+		d3d::Device       device_{};
+		win::Timer        timer_{};
+		ViewPtrType       pView_{};
+		SceneArrType      arrScene_{};
+		TimePoint         last_{};
+		TimePoint         start_{};
 	};
 
 }

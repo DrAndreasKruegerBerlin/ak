@@ -75,6 +75,7 @@ namespace ak
 
 		D3DXMATRIX matRotateX;	     // a matrix to store the translation for second pyramid
 		D3DXMATRIX matRotateY;       // a matrix to store the Y rotation 
+		D3DXMATRIX matRotateZ;
 
 		// calculate angel for rotation: 1 round in 3 second
 		const auto durSinceStart = tpNow - tpStart;
@@ -90,11 +91,23 @@ namespace ak
 
 		D3DXMATRIX matTranslateX;
 		D3DXMATRIX matScale;
-		D3DXMatrixTranslation(&matTranslateX, 40, 0, 0);
+		D3DXMatrixTranslation(&matTranslateX, 6, 0, 0);
 		D3DXMatrixScaling(&matScale, 0.2f, 0.2f, 0.2f);
-		D3DXMatrixRotationY(&matRotateY, -angelY);
 
-		dev.setTransformWorld(matTranslateX * matScale * matRotateX * matRotateY);
+		D3DXMatrixRotationY(&matRotateY, -angelY);
+		dev.setTransformWorld(matScale * matTranslateX * matRotateX * matRotateY);
+		dev.drawPrimitive(noVertices);
+
+		D3DXMatrixRotationZ(&matRotateZ, -angelY + D3DX_PI / 2);
+		dev.setTransformWorld(matScale * matTranslateX * matRotateX * matRotateZ);
+		dev.drawPrimitive(noVertices);
+
+		D3DXMatrixRotationY(&matRotateY, -angelY + D3DX_PI);
+		dev.setTransformWorld(matScale *matTranslateX *  matRotateX * matRotateY);
+		dev.drawPrimitive(noVertices);
+
+		D3DXMatrixRotationZ(&matRotateZ, -angelY + 3*D3DX_PI/2);
+		dev.setTransformWorld(matScale * matTranslateX * matRotateX * matRotateZ);
 		dev.drawPrimitive(noVertices);
 	}
 

@@ -7,23 +7,6 @@
 namespace ak
 {
 
-	App::App(const std::wstring& name, d3d::Context& context, ScenePtrType&& pScene, ViewPtrType&& pView)
-		: win::AppBase(name, context)
-		, device_{}
-		, timer_{}
-		, pScene_{ std::move(pScene) }
-		, pView_{ std::move(pView) }
-		, last_{}
-		, start_{}
-	{
-		// do nothing
-	}
-
-	App::~App()
-	{
-		// do nothing
-	}
-
 	std::optional<LRESULT> App::passEvent(const win::Event& ev)
 	{
 		switch (ev.msg_)
@@ -54,7 +37,8 @@ namespace ak
 
 		device_ = context_.createDevice(ev.hWnd_);
 		pView_->init(rectClient.right - rectClient.left, rectClient.bottom - rectClient.top);
-		pScene_->init(device_);
+		for (auto it = arrScene_.begin(); it != arrScene_.end(); ++it)
+			(**it).init(device_);
 		last_ = start_ = Clock::now();
 		timer_.set(ev.hWnd_, std::chrono::milliseconds(50));
 		return { 0 };
@@ -80,7 +64,8 @@ namespace ak
 		device_.clear();
 		device_.beginScene();
 		pView_->render(device_, ps.rcPaint.right - ps.rcPaint.left, ps.rcPaint.bottom - ps.rcPaint.top);
-		pScene_->render(device_, tp, start_);
+		for (auto it = arrScene_.begin(); it != arrScene_.end(); ++it)
+			(**it).render(device_, tp, start_);
 		device_.endScene();
 		device_.present();
 

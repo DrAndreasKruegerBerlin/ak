@@ -53,7 +53,7 @@ namespace ak
 		// build MULTIPLE matrices to translate the model and one to rotate
 		D3DXMatrixTranslation(&matTranslate1, 0.0f, 0.0f, 2.0f);
 		D3DXMatrixTranslation(&matTranslate2, 0.0f, 0.0f, -2.0f);
-		D3DXMatrixRotationY(&matRotateY, angel);    // the front side
+		D3DXMatrixRotationY(&matRotateY, -angel);    
 
 		const std::size_t noVertices = buffer_.getNoOfVertices();
 
