@@ -17,8 +17,8 @@ namespace win
 			HWND* phWnd = (HWND*) pParameter;
 			if (nullptr != phWnd && nullptr != *phWnd && isTimerOrWaitFired)
 			{
-				const BOOL ok = ::PostMessageW(*phWnd, WM_TIMER, WPARAM(* phWnd), 0);
-				//const BOOL ok = ::InvalidateRect(*phWnd, NULL, TRUE);
+				//const BOOL ok = ::PostMessageW(*phWnd, WM_TIMER, WPARAM(* phWnd), 0);
+				const BOOL ok = ::InvalidateRect(*phWnd, NULL, TRUE);
 			}
 		};
 

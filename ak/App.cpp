@@ -18,7 +18,7 @@ namespace ak
 		case WM_PAINT:
 			return doPaint(ev);
 		case WM_ERASEBKGND:
-			return { 0 };
+			return doEraseBkgnd(ev);
 		default:
 			break;
 		}
@@ -37,8 +37,8 @@ namespace ak
 
 		device_ = context_.createDevice(ev.hWnd_);
 		pView_->init(rectClient.right - rectClient.left, rectClient.bottom - rectClient.top);
-		for (auto it = arrScene_.begin(); it != arrScene_.end(); ++it)
-			(**it).init(device_);
+		for (auto& it : arrScene_)
+			it->init(device_);
 		last_ = start_ = Clock::now();
 		timer_.set(ev.hWnd_, std::chrono::milliseconds(50));
 		return { 0 };
@@ -46,8 +46,12 @@ namespace ak
 
 	std::optional<LRESULT> App::doTimer(const win::Event& ev)
 	{
-		BOOL ok = 0;
-		ok = ::InvalidateRect(ev.hWnd_, nullptr, TRUE);
+		BOOL ok = ::InvalidateRect(ev.hWnd_, nullptr, TRUE);
+		return { 0 };
+	}
+
+	std::optional<LRESULT> App::doEraseBkgnd(const win::Event& ev)
+	{
 		return { 0 };
 	}
 
@@ -55,20 +59,21 @@ namespace ak
 	{
 		win::Painter painter(ev.hWnd_);
 
-		TimePoint tp = Clock::now();
-		auto diff = std::chrono::duration_cast<std::chrono::milliseconds>(tp - last_);
-		deb::Debug() << "Rendering (diff:" << diff << ")................";
+		const TimePoint tp = Clock::now();
+		const auto diff = std::chrono::duration_cast<std::chrono::milliseconds>(tp - last_);
+		deb::Debug() << getName() << ":Rendering start (diff:" << diff << ")";
 
 		const PAINTSTRUCT& ps = painter.getPs();
 
 		device_.clear();
 		device_.beginScene();
 		pView_->render(device_, ps.rcPaint.right - ps.rcPaint.left, ps.rcPaint.bottom - ps.rcPaint.top);
-		for (auto it = arrScene_.begin(); it != arrScene_.end(); ++it)
-			(**it).render(device_, tp, start_);
+		for (auto& it : arrScene_)
+			it->render(device_, tp, start_);
 		device_.endScene();
 		device_.present();
 
+		deb::Debug() << getName() << ":Rendering end (tot:" << std::chrono::duration_cast<std::chrono::microseconds>(Clock::now() - tp) << ")";
 		last_ = tp;
 		return { 0 };
 	}

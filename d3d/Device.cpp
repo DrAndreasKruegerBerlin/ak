@@ -96,7 +96,7 @@ namespace d3d
 
 	void Device::setRenderStateCullMode(const CullMode mode)
 	{
-		DWORD cullmode{ 0 };
+		DWORD cullmode{};
 		switch (mode)
 		{
 		case CullMode::NONE:
@@ -112,6 +112,26 @@ namespace d3d
 			throw D3D_RUNTIME_ERROR("bad cull mode");
 		}
 		D3D_RUNTIME_ERROR_HR_CHECK(pDev_->SetRenderState(D3DRS_CULLMODE, cullmode));
+	}
+
+	void Device::SetRenderStateFillmode(const FillMode mode)
+	{
+		DWORD fillmode{};
+		switch (mode)
+		{
+		case FillMode::POINT:
+			fillmode = D3DFILL_POINT;
+			break;
+		case FillMode::SOLID:
+			fillmode = D3DFILL_SOLID;
+			break;
+		case FillMode::WIREFRAME:
+			fillmode = D3DFILL_WIREFRAME;
+			break;
+		default:
+			throw D3D_RUNTIME_ERROR("bad fill mode");
+		}
+		D3D_RUNTIME_ERROR_HR_CHECK(pDev_->SetRenderState(D3DRS_FILLMODE, fillmode));
 	}
 
 	void Device::setVertexFormat(const DWORD format)

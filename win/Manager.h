@@ -6,6 +6,7 @@
 #include <memory>
 #include <string>
 #include <optional>
+#include <array>
 
 
 namespace win
@@ -14,13 +15,20 @@ namespace win
 	class Manager
 	{
 	public:
-		using AppBasePtrType = std::shared_ptr<win::AppBase>;
-		using MapType = std::map<HWND, AppBasePtrType >;
+		using AppBasePtrType = std::unique_ptr<win::AppBase>;
+		using MapType = std::map<HWND, std::shared_ptr<win::AppBase> >;
 
 	public:
 		Manager(HINSTANCE hInst);
 		~Manager();
-		void passApp(AppBasePtrType spApp);
+		template<typename ...App>
+		void passApps(App&& ... app)
+		{
+			std::array<AppBasePtrType, sizeof ... (app)> arrApp{{std::move(app) ...}};
+			for (auto& a : arrApp)
+				passApp(std::move(a));
+		}
+		void passApp(AppBasePtrType&& pApp);
 		int run();
 
 	private:

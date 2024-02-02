@@ -13,6 +13,7 @@ namespace d3d
 	{
 	public:
 		enum class CullMode { NONE, CW, CCW };
+		enum class FillMode { POINT, SOLID, WIREFRAME };
 
 	public:
 		Device() noexcept = default;
@@ -34,6 +35,7 @@ namespace d3d
 		void setRenderStateLight(const bool on);
 		void setRenderStateZEnable(const bool on);
 		void setRenderStateCullMode(const CullMode mode);
+		void SetRenderStateFillmode(const FillMode mode);
 
 		void setVertexFormat(const DWORD format);
 		void drawPrimitive(const UINT count);

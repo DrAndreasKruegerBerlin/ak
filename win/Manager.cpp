@@ -37,8 +37,9 @@ namespace win
 		hInst_ = nullptr;
 	}
 
-	void Manager::passApp(AppBasePtrType spApp)
+	void Manager::passApp(AppBasePtrType&& pApp)
 	{
+		std::shared_ptr<win::AppBase> spApp{ std::move(pApp) };
 		const HWND hWnd = ::CreateWindowExW(
 			0,
 			LPCWSTR(atomRegister_),
@@ -133,7 +134,8 @@ namespace win
 		{
 			throw std::runtime_error("bad create struct");
 		}
-		AppBasePtrType* ppsApp = reinterpret_cast<AppBasePtrType*>(pCs->lpCreateParams);
+		std::shared_ptr<win::AppBase>* ppsApp = 
+			reinterpret_cast<std::shared_ptr<win::AppBase>*>(pCs->lpCreateParams);
 		if (! map_.insert({ ev.hWnd_, *ppsApp }).second)
 		{
 			throw std::runtime_error("bad insert");
