@@ -43,6 +43,7 @@ namespace ak
 		std::optional<LRESULT> doCreate(const win::Event& ev);
 		std::optional<LRESULT> doTimer(const win::Event& ev);
 		std::optional<LRESULT> doPaint(const win::Event& ev);
+		std::optional<LRESULT> doEraseBkgnd(const win::Event& ev);
 
 	private:
 		d3d::Device       device_{};

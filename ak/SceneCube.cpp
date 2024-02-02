@@ -79,7 +79,7 @@ namespace ak
 
 		// calculate angel for rotation: 1 round in 3 second
 		const auto durSinceStart = tpNow - tpStart;
-		const auto millisecs = durSinceStart.count() / 1'000'000 / 4;
+		const auto millisecs = durSinceStart.count() / 1'000'000 / 10;
 		const FLOAT angelY = (2 * D3DX_PI) * (millisecs % 1'000) / 1'000;
 		D3DXMatrixRotationY(&matRotateY, angelY);    
 		D3DXMatrixRotationX(&matRotateX, (2 * D3DX_PI / 360) * 45);
@@ -104,6 +104,7 @@ namespace ak
 
 		D3DXMatrixRotationY(&matRotateY, -angelY + D3DX_PI);
 		dev.setTransformWorld(matScale *matTranslateX *  matRotateX * matRotateY);
+
 		dev.drawPrimitive(noVertices);
 
 		D3DXMatrixRotationZ(&matRotateZ, -angelY + 3*D3DX_PI/2);

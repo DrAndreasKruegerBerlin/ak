@@ -22,6 +22,7 @@
     <ClCompile Include="ak\App.cpp" />
     <ClCompile Include="ak\SceneCube.cpp" />
     <ClCompile Include="ak\ScenePyramid.cpp" />
+    <ClCompile Include="ak\SceneRing.cpp" />
     <ClCompile Include="ak\View.cpp" />
     <ClCompile Include="d3d\Context.cpp" />
     <ClCompile Include="d3d\Device.cpp" />
@@ -40,6 +41,7 @@
     <ClInclude Include="ak\IView.h" />
     <ClInclude Include="ak\SceneCube.h" />
     <ClInclude Include="ak\ScenePyramid.h" />
+    <ClInclude Include="ak\SceneRing.h" />
     <ClInclude Include="ak\View.h" />
     <ClInclude Include="com\Cast.h" />
     <ClInclude Include="com\Chrono.h" />
